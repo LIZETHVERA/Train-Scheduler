@@ -1,0 +1,12 @@
+body {
+    background-image: url("../images/hp1.jpg");
+ 
+} 
+.jumbotron {
+    background-image: url("../images/express.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: white;
+ 
+} 
+

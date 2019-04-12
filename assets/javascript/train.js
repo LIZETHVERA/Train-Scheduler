@@ -60,8 +60,8 @@ database.ref().on('child_added', function (childSnapshot) {
   var nextTrain = moment().add(minutesAway, "minutes");
   var tableRow = $('<tr>');
 
-  tableRow.append($('<button>').addClass("update").attr('data-key',childSnapshot.key).text("Update"));
-  tableRow.append($('<td>').text(childSnapshot.val().train));
+  tableRow.append($('<button>').addClass("update").attr('data-keyUp',childSnapshot.key).text("Update"));
+  tableRow.append($('<td contenteditable="true">').text(childSnapshot.val().train));
   tableRow.append($('<td>').text(childSnapshot.val().destination));
   tableRow.append($('<td>').text(childSnapshot.val().frecuency));
   tableRow.append($('<td>').text(nextTrain)); // Next arrivals
@@ -69,14 +69,13 @@ database.ref().on('child_added', function (childSnapshot) {
   tableRow.append($('<button>').addClass("remove").attr('data-key',childSnapshot.key).text("Remove"));
   // tableRow.append($('<td>').text();
   tableRow.appendTo($('#train-display'));
-  console.log(childSnapshot);
   
   $('.remove').on('click', function () {
     var row = $(this).closest('tr');
     row.remove();
-
+  
     var key = $(this).attr('data-key');
-
+  
     var adaRef = database.ref(key);
     adaRef.remove()
       .then(function () {
@@ -87,13 +86,13 @@ database.ref().on('child_added', function (childSnapshot) {
       });
   })
 
-  $('.update').on('click', function () {
-    var keyUp = $(this).attr('data-key');
-    console.log(keyUp);
-    
-  })
+  
 
+$('.update').on('click', function () {
 
-
+  
+})
+  
+ 
 })
 
